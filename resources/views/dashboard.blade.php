@@ -3,6 +3,14 @@
  * @var $events \App\Models\Event[]
  */
 ?>
+<style>
+    .btn {
+        border-radius: 6px;
+        background-color: #166dfa;
+        color: white;
+        padding: 3px;
+    }
+</style>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -54,7 +62,9 @@
                                 </td>
                                 <td>
                                     @if (!$event->reservations->contains('user_id', Auth::user()->id))
-                                        <a href="{{ route('reserve', [$event->id]) }}" class="">{{ __('Reserve') }}</a>
+                                        <a href="{{ route('reserve', [$event->id]) }}">
+                                            <button class="btn">{{ __('Reserve') }}</button>
+                                        </a>
                                     @else
                                         {{ __('Reserved') }}
                                     @endif
